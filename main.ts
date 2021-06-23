@@ -47,7 +47,7 @@ function snakeToCamel(strSelectedText:string) {
                 strTmp = strTmp + aryWork[j].substr(0, 1).toUpperCase() + aryWork[j].substr(1);
             }
         }
-        if (j + 1 < row) {
+        if (i+1 < row) {
             result = result + strTmp + "\n";
         } else {
             result = result + strTmp;
