@@ -1,54 +1,54 @@
 /**
- * ƒXƒl[ƒNƒP[ƒX‚©‚çƒLƒƒƒƒ‹ƒP[ƒX‚Ö•ÏŠ·‚·‚é
+ * ã‚¹ãƒãƒ¼ã‚¯ã‚±ãƒ¼ã‚¹ã‹ã‚‰ã‚­ãƒ£ãƒ¡ãƒ«ã‚±ãƒ¼ã‚¹ã¸å¤‰æ›ã™ã‚‹
  */
 
-// ’è”‚ÌéŒ¾
+// å®šæ•°ã®å®£è¨€
 var TYPE_PAIR = 6;
 var TYPE_GROUP = 7;
 
-// •Ï”‚ÌéŒ¾
-var SelFrom = GetSelectLineFrom();        // ‘I‘ğŠJnsæ“¾
-var SelTo = GetSelectLineTo();            // ‘I‘ğÅIsæ“¾
+// å¤‰æ•°ã®å®£è¨€
+var SelFrom = GetSelectLineFrom();        // é¸æŠé–‹å§‹è¡Œå–å¾—
+var SelTo = GetSelectLineTo();            // é¸æŠæœ€çµ‚è¡Œå–å¾—
 
-// •¡”s‘I‘ğ‚³‚ê‚Ä‚¢‚éê‡
+// è¤‡æ•°è¡Œé¸æŠã•ã‚Œã¦ã„ã‚‹å ´åˆ
 if (SelFrom != SelTo) {
     Editor.Jump(SelFrom, 0);
-    Editor.BeginSelect();                     // ‘I‘ğŠJn
+    Editor.BeginSelect();                     // é¸æŠé–‹å§‹
     Editor.Jump(SelTo, 0);
-    Editor.GoLineEnd_Sel();                   // s‚ÌÅŒã‚ÉˆÚ“®
+    Editor.GoLineEnd_Sel();                   // è¡Œã®æœ€å¾Œã«ç§»å‹•
 }
 
-// ‘I‘ğ”ÍˆÍ‚ÌƒeƒLƒXƒg‚ğæ“¾
+// é¸æŠç¯„å›²ã®ãƒ†ã‚­ã‚¹ãƒˆã‚’å–å¾—
 var strSelectedText = Editor.GetSelectedString();
 
 var WSHShell = new ActiveXObject("WScript.Shell");
 
-// ƒƒCƒ“ˆ—
+// ãƒ¡ã‚¤ãƒ³å‡¦ç†
 var createText = Main(strSelectedText);
 
-// Œ‹‰Ê‚ğƒGƒfƒBƒ^o—Í
+// çµæœã‚’ã‚¨ãƒ‡ã‚£ã‚¿å‡ºåŠ›
 Editor.InsText(createText);
 
 /**
- * ƒXƒl[ƒNƒP[ƒX‚©‚çƒLƒƒƒƒ‹ƒP[ƒX‚Ö•ÏŠ·‚·‚é
- * @param strSelectedText ‘I‘ğ•¶š—ñ
+ * ã‚¹ãƒãƒ¼ã‚¯ã‚±ãƒ¼ã‚¹ã‹ã‚‰ã‚­ãƒ£ãƒ¡ãƒ«ã‚±ãƒ¼ã‚¹ã¸å¤‰æ›ã™ã‚‹
+ * @param strSelectedText é¸æŠæ–‡å­—åˆ—
  */
 function Main(strSelectedText) {
 
-    // •ÏŠ·Œ‹‰Ê•¶š—ñ
+    // å¤‰æ›çµæœæ–‡å­—åˆ—
     var strConvertText = strSelectedText;
 
-    // ¬•¶š‚É•ÏŠ·
+    // å°æ–‡å­—ã«å¤‰æ›
     strConvertText = strConvertText.toLowerCase();
-    // •ÏŠ·Œ‹‰Ê•¶š—ñ
+    // å¤‰æ›çµæœæ–‡å­—åˆ—
     var result = "";
 
-    // s‚²‚Æ‚Ìƒf[ƒ^‚ğæ“¾
+    // è¡Œã”ã¨ã®ãƒ‡ãƒ¼ã‚¿ã‚’å–å¾—
     var arySelectedText = strConvertText.split("\n");
-    // s”
+    // è¡Œæ•°
     var row = arySelectedText.length;
 
-    // ‘I‘ğs”•ªˆ—‚ğŒJ‚è•Ô‚·
+    // é¸æŠè¡Œæ•°åˆ†å‡¦ç†ã‚’ç¹°ã‚Šè¿”ã™
     for (var i = 0; i < row; i++) {
 
         var aryWork = arySelectedText[i].split("_");
